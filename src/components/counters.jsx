@@ -43,6 +43,13 @@ class Counters extends Component {
     render() {
         return (
             <div>
+                <p>
+                    In total there are{" "}
+                    {this.state.counters.reduce((acc, n) => {
+                        return acc + n.value;
+                    }, 0)}{" "}
+                    items
+                </p>
                 <button
                     className="btn btn-primary btn-sm m-2"
                     onClick={this.handleReset}
