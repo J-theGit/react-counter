@@ -4,28 +4,38 @@ class Counter extends Component {
     render() {
         const { counter, onIncrement, onDecrement, onDelete } = this.props;
         return (
-            <div>
-                <span style={{ minWidth: "4em" }} className={this.countClass()}>
-                    {this.formatCount()}
-                </span>
-                <button
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => onIncrement(counter.id)}
-                >
-                    +
-                </button>
-                <button
-                    className="btn btn-secondary btn-sm m-2"
-                    onClick={() => onDecrement(counter.id)}
-                >
-                    -
-                </button>
-                <button
-                    onClick={() => onDelete(counter.id)}
-                    className="btn btn-danger btn-sm m-2"
-                >
-                    Delete
-                </button>
+            <div className="row">
+                <div className="col-1">
+                    <span className={this.countClass()}>
+                        {this.formatCount()}
+                    </span>
+                </div>
+                <div className="col">
+                    <button
+                        className="btn btn-secondary btn-sm"
+                        onClick={() => onIncrement(counter.id)}
+                        style={{ minWidth: "2em" }}
+                    >
+                        +
+                    </button>
+                    <button
+                        className="btn btn-secondary btn-sm m-2"
+                        onClick={() => onDecrement(counter.id)}
+                        style={{ minWidth: "2em" }}
+                        disabled={
+                            this.props.counter.value === 0 ? "disabled" : ""
+                        }
+                    >
+                        -
+                    </button>
+                    <button
+                        onClick={() => onDelete(counter.id)}
+                        className="btn btn-danger btn-sm"
+                        style={{ minWidth: "2em" }}
+                    >
+                        X
+                    </button>
+                </div>
             </div>
         );
     }
